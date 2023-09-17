@@ -1,0 +1,2 @@
+class ServerPart < ApplicationRecord
+end

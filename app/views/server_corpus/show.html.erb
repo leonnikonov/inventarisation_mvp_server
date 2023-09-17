@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @server_corpu %>
+
+<div>
+  <%= link_to "Edit this server corpu", edit_server_corpu_path(@server_corpu) %> |
+  <%= link_to "Back to server corpus", server_corpus_path %>
+
+  <%= button_to "Destroy this server corpu", @server_corpu, method: :delete %>
+</div>

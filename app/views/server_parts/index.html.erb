@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Server parts</h1>
+
+<div id="server_parts">
+  <% @server_parts.each do |server_part| %>
+    <%= render server_part %>
+    <p>
+      <%= link_to "Show this server part", server_part %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New server part", new_server_part_path %>

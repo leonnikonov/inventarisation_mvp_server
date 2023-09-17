@@ -1,0 +1,22 @@
+<%= form_with(model: server_part) do |form| %>
+  <% if server_part.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(server_part.errors.count, "error") %> prohibited this server_part from being saved:</h2>
+
+      <ul>
+        <% server_part.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

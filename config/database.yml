@@ -1,0 +1,41 @@
+credentials: &credentials
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: leon1234Q
+  host: localhost
+  port: 3306
+
+development:
+  <<: *credentials
+  database: leadertelecom_development
+
+test:
+  <<: *credentials
+  database: leadertelecom_test
+
+# ArchiveVersion model try to connect to the versions legacy database.
+versions:
+  <<: *credentials
+  database: leadertelecom_development
+
+versions_test:
+  <<: *credentials
+  database: leadertelecom_test
+
+versions_development:
+  <<: *credentials
+  database: leadertelecom_development
+
+# Certificate model try to connect to the certificates legacy database.
+certificates:
+  <<: *credentials
+  database: leadertelecom_development
+
+gpu:
+  <<: *credentials
+  database: leadertelecom_development
+
+cdr:
+  <<: *credentials
+  database: leadertelecom_development
