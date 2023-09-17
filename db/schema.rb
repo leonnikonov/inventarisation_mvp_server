@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_17_181143) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_17_191733) do
   create_table "abuse_stats", id: { type: :integer, unsigned: true }, charset: "utf8mb3", force: :cascade do |t|
     t.string "ip"
     t.date "date"
@@ -4140,6 +4140,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_181143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "server_corpus_id"
+    t.integer "server_corpu_id"
   end
 
   create_table "server_sessions", id: :integer, charset: "utf8mb3", force: :cascade do |t|

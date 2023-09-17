@@ -2,6 +2,13 @@
 
 <%= render @server_corpu %>
 
+<%= link_to 'png', server_corpu_path(format: :png, id: @server_corpu.id) %>
+
+<%= link_to 'tst', bind_part_server_corpu_path(id: @server_corpu.id, part_id: 1), method: :post %>
+
+<% @server_corpu.server_parts.each do |part| %>
+  <p><%= part.name %></p>
+<% end %>
 <div>
   <%= link_to "Edit this server corpu", edit_server_corpu_path(@server_corpu) %> |
   <%= link_to "Back to server corpus", server_corpus_path %>

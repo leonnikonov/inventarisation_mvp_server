@@ -1,5 +1,6 @@
 class ServerCorpusController < ApplicationController
-  before_action :set_server_corpu, only: %i[ show edit update destroy ]
+  require "rqrcode"
+  before_action :set_server_corpu, only: %i[ show edit update destroy bind_part ]
 
   # GET /server_corpus or /server_corpus.json
   def index
@@ -8,6 +9,16 @@ class ServerCorpusController < ApplicationController
 
   # GET /server_corpus/1 or /server_corpus/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.png { send_data RQRCode::QRCode.new(@server_corpu.id.to_s).as_png(
+        color: "000",
+        shape_rendering: "crispEdges",
+        module_size: 11,
+        standalone: true,
+        use_path: true
+      ).to_s }
+    end
   end
 
   # GET /server_corpus/new
@@ -55,6 +66,11 @@ class ServerCorpusController < ApplicationController
       format.html { redirect_to server_corpus_url, notice: "Server corpu was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def bind_part
+    @server_corpu.bind_part(params[:part_id])
+    render json:{status: :binded}, status: :ok
   end
 
   private

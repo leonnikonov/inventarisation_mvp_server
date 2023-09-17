@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @server_part %>
+<%= link_to 'png', server_part_path(format: :png, id: @server_part.id) %>
 
 <div>
   <%= link_to "Edit this server part", edit_server_part_path(@server_part) %> |
