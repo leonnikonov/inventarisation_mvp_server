@@ -6,6 +6,17 @@ credentials: &credentials
   host: localhost
   port: 3306
 
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  username: t4obb855xlm9n3au
+  password: gkkq80zxwf1rhe2h
+  host: eanl4i1omny740jw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+  port: 3306
+  database: u17cx6i9l3pcjgxu
+
+
 development:
   <<: *credentials
   database: leadertelecom_development
