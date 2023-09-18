@@ -6,9 +6,19 @@
 
 <%= link_to 'tst', bind_part_server_corpu_path(id: @server_corpu.id, part_id: 1), method: :post %>
 
-<% @server_corpu.server_parts.each do |part| %>
-  <p><%= part.name %></p>
-<% end %>
+<table class="table">
+  <% @server_corpu.server_server_parts.each do |server_part| %>
+    <tr>
+      <td>
+        <%= server_part.created_at %>
+      </td>
+      <td>
+        <%= server_part.server_part.name %>
+      </td>
+    </tr>
+    <p></p>
+  <% end %>
+</table>
 <div>
   <%= link_to "Edit this server corpu", edit_server_corpu_path(@server_corpu) %> |
   <%= link_to "Back to server corpus", server_corpus_path %>

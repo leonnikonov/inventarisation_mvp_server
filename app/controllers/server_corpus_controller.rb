@@ -12,11 +12,16 @@ class ServerCorpusController < ApplicationController
     respond_to do |format|
       format.html
       format.png { send_data RQRCode::QRCode.new(@server_corpu.id.to_s).as_png(
-        color: "000",
-        shape_rendering: "crispEdges",
-        module_size: 11,
-        standalone: true,
-        use_path: true
+        bit_depth: 1,
+        border_modules: 4,
+        color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+        color: "black",
+        file: nil,
+        fill: "white",
+        module_px_size: 6,
+        resize_exactly_to: false,
+        resize_gte_to: false,
+        size: 120
       ).to_s }
     end
   end
@@ -70,17 +75,18 @@ class ServerCorpusController < ApplicationController
 
   def bind_part
     @server_corpu.bind_part(params[:part_id])
-    render json:{status: :binded}, status: :ok
+    render json: { status: :binded }, status: :ok
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_server_corpu
-      @server_corpu = ServerCorpu.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def server_corpu_params
-      params.require(:server_corpu).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_server_corpu
+    @server_corpu = ServerCorpu.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def server_corpu_params
+    params.require(:server_corpu).permit(:name)
+  end
 end
